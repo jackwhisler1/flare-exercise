@@ -11,7 +11,7 @@
         <tr div v-for="airport in sortedByAirport" v-bind:key="airport.id">
           {{ airport[0].Airport.Code }}
           <td v-for="month in airport" v-bind:key="month.id">
-            {{ month.Statistics.Flights.Cancelled }}
+            {{ calculatePercentage(month.Statistics.Flights.Cancelled, month.Statistics.Flights.Total) }}%
           </td>
         </tr>
       </tbody>
@@ -55,9 +55,8 @@ export default {
       });
       console.log(this.airportCodes);
     },
-    calculatePercent: function (number, total) {
-      console.log(Math.ceil(number / total) + "%");
-      return Math.ceil(number / total) + "%";
+    calculatePercentage: function (number, total) {
+      return ((100 * number) / total).toFixed(1);
     },
     setYear: function (year) {
       this.annualData = this.flightData.filter((flight) => flight.Time.Year === year);
