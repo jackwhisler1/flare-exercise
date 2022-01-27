@@ -1,6 +1,8 @@
 <template>
   <div class="container-md p-5">
-    <h2 class="p-2">Flight Data</h2>
+    <h1 class="p-2">Flight Data</h1>
+    <!-- Set these terms dynamically when user selects dropdown -->
+    <h2>Cancelled Flights in 2008</h2>
     <table v-if="totalFlightData.length" class="table table-hover">
       <thead>
         <tr>
