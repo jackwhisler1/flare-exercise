@@ -1,6 +1,12 @@
 <template>
   <div id="app">
+    <div class="bg-info" id="nav">
+      <router-link to="/">Home</router-link>
+      |
+      <a href="https://github.com/jackwhisler1/flare-exercise">GitHub Repository</a>
+    </div>
     <router-view />
+    <Footer></Footer>
   </div>
 </template>
 
@@ -20,9 +26,15 @@
 #nav a {
   font-weight: bold;
   color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  text-decoration: none;
 }
 </style>
+
+<script>
+import Footer from "./components/Footer";
+export default {
+  components: {
+    Footer,
+  },
+};
+</script>
