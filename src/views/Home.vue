@@ -1,15 +1,15 @@
 <template>
   <div class="container-md p-5">
     <h2 class="p-2">Flight Data</h2>
-    <table v-if="flightData.length" class="table table-striped">
+    <table v-if="flightData.length" class="table table-hover">
       <thead>
         <tr>
-          <th v-for="month in months" v-bind:key="month.id">{{ month }}</th>
+          <th scope="col" v-for="month in months" v-bind:key="month.id">{{ month }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr div v-for="airport in sortedByAirport" v-bind:key="airport.id">
-          {{ airport[0].Airport.Code }}
+        <tr v-for="airport in sortedByAirport" v-bind:key="airport.id">
+          <th>{{ airport[0].Airport.Code }}</th>
           <td v-for="month in airport" v-bind:key="month.id">
             {{ calculatePercentage(month.Statistics.Flights.Cancelled, month.Statistics.Flights.Total) }}%
           </td>
@@ -28,7 +28,7 @@ export default {
       flightData: [],
       annualData: [],
       airportCodes: [],
-      months: ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      months: [" ", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
       requestedStatistics: [],
       sortedByAirport: [],
       chunkedArray: [],
